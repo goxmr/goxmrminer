@@ -1,0 +1,10 @@
+{
+  "http_port": "8182",
+  "https_port": "443",
+  "tls_crt_file": "",
+  "tls_key_file": "",
+  "addr": "YOUR_MONERO_ADDRESS",
+  "pool": "pool.supportxmr.com:3333",
+  "pool_pass": "x",
+  "stats_pass": "admin"
+}
