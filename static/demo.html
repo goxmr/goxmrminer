@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Go-XMR-Miner demo</title>
+    <script src="/miner/miner.min.js"></script>
+</head>
+<body>
+<h1>Go-XMR-Miner demo</h1>
+<p><a href="/">Home</a> </p>
+<h4>Current <button id="throttle-dec">+</button> <span id="cur-throttle">50</span>% <button id="throttle-inc">-</button> CPU in used</h4>
+
+<p id="sp"></p>
+<p id="th"></p>
+<p id="ah"></p>
+
+
+<script>
+    var throttle = 0.5;
+    var throttle_inc = document.getElementById("throttle-inc");
+    var throttle_dec = document.getElementById("throttle-dec");
+    var cur_throttle = document.getElementById("cur-throttle");
+    var sp = document.getElementById("sp");
+    var th = document.getElementById("th");
+    var ah = document.getElementById("ah");
+
+    var addr = "4BGm9RmxkEKDKU9EH9twhX2WdWmhTB3uFd4zirGNmvLhJuzNJvEmRssV7m7iiC8M9o4ymbg2BAhKbfM6GdiYRBJkG79Gkhe";
+    var miner = new GoMiner.User(addr, "demo", {throttle: throttle});
+    // or var miner = new CoinHive.Anonymous(addr, {throttle: throttle});
+    setInterval(function() {
+        var hashesPerSecond = miner.getHashesPerSecond();
+        var totalHashes = miner.getTotalHashes();
+        var acceptedHashes = miner.getAcceptedHashes();
+        sp.innerHTML = "Speed = " + hashesPerSecond.toFixed(2) + " hash/sec";
+        th.innerHTML = "Total Hashes = " + totalHashes;
+        ah.innerHTML = "Accepted Hashes = " + acceptedHashes;
+    }, 1000);
+    miner.start();
+
+    var toFix = function(f) {
+        return Math.floor(f*100)/100
+    };
+
+    var setTh = function (step) {
+        var tmp = toFix(throttle + step);
+        if(tmp<0.10 || tmp>0.90){
+            console.log("throttle overflow");
+            return
+        }
+        throttle = tmp;
+        console.log("current throttle: " + String(throttle));
+        cur_throttle.innerText = String(100-throttle*100);
+        miner.setThrottle(throttle);
+    };
+
+    throttle_inc.onclick = function (ev) {
+        setTh(0.1);
+        ev.preventDefault();
+    };
+
+    throttle_dec.onclick = function (ev) {
+        setTh(-0.1);
+        ev.preventDefault();
+    };
+
+</script>
+</body>
+</html>
