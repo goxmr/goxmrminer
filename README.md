@@ -43,3 +43,10 @@ Edit `conf.json` file
 ```
 http://yoursite.com:8182
 ```
+## Live Demo
+
+https://goxmrminer.com/static/demo.html
+
+## Disclaimer
+
+This project is not endorsed by or affiliated with coinhive.com in any way.
