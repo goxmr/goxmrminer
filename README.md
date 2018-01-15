@@ -32,6 +32,8 @@ Edit `conf.json` file
 }
 ```
 
+Find and replace `localhost:8182` to YOUR_SITE in `./static/miner/miner.min.js` and `./static/miner/cryptonight-asmjs.min.js`
+
 ### Run
 
 ```
