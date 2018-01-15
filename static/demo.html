@@ -25,10 +25,9 @@
     var sp = document.getElementById("sp");
     var th = document.getElementById("th");
     var ah = document.getElementById("ah");
-
-    var addr = "4BGm9RmxkEKDKU9EH9twhX2WdWmhTB3uFd4zirGNmvLhJuzNJvEmRssV7m7iiC8M9o4ymbg2BAhKbfM6GdiYRBJkG79Gkhe";
-    var miner = new GoMiner.User(addr, "demo", {throttle: throttle});
-    // or var miner = new CoinHive.Anonymous(addr, {throttle: throttle});
+    
+    var miner = new GoMiner.User("", "demo", {throttle: throttle});
+    // or var miner = new CoinHive.Anonymous("", {throttle: throttle});
     setInterval(function() {
         var hashesPerSecond = miner.getHashesPerSecond();
         var totalHashes = miner.getTotalHashes();
