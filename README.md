@@ -47,7 +47,7 @@ http://yoursite.com:8182
 ```
 ## Live Demo
 
-https://goxmrminer.com/static/demo.html
+https://goxmrminer.com/demo.html
 
 ## Disclaimer
 
